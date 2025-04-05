@@ -12,3 +12,4 @@ D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\ref
 D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\Program.pdb
 D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\Program.genruntimeconfig.cache
 D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\ref\Program.dll
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\Program.sourcelink.json
