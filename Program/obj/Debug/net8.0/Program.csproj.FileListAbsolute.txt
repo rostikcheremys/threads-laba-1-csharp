@@ -1,0 +1,14 @@
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\bin\Debug\net8.0\Program.exe
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\bin\Debug\net8.0\Program.deps.json
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\bin\Debug\net8.0\Program.runtimeconfig.json
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\bin\Debug\net8.0\Program.dll
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\bin\Debug\net8.0\Program.pdb
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\Program.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\Program.AssemblyInfoInputs.cache
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\Program.AssemblyInfo.cs
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\Program.csproj.CoreCompileInputs.cache
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\Program.dll
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\refint\Program.dll
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\Program.pdb
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\Program.genruntimeconfig.cache
+D:\Programming\Thread\threads-laba-1-csharp\Program\Program\obj\Debug\net8.0\ref\Program.dll
