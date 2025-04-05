@@ -11,7 +11,7 @@ class Program
     {
         Random random = new Random();
 
-        for (int i = 1; i <= 10; i++)
+        for (int i = 1; i <= 4; i++)
         {
             int time = random.Next(15000, 30000);
             ThreadInfo info = new ThreadInfo(i, time);
@@ -24,20 +24,21 @@ class Program
     private void Counter(object obj)
     {
         ThreadInfo info = (ThreadInfo)obj;
-
-        long number = 0;
+        
         long sum = 0;
+        long count = 0;
 
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddMilliseconds(info.TimeToRun);
 
         while (DateTime.Now < endTime)
         {
-            sum += number;
-            number++;
+            sum += count;
+            count++;
         }
 
         Console.WriteLine($"\n[Потiк №{info.Id}] завершився через {info.TimeToRun / 1000.0:F1} сек.");
-        Console.WriteLine($"  Сума: {sum}");
+        Console.WriteLine($"Кiлькiсть елементiв: {count}");
+        Console.WriteLine($"Сума: {sum}");
     }
 }
