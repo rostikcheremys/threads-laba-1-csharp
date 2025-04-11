@@ -1,44 +1,80 @@
-﻿namespace Program;
+﻿using System.Diagnostics;
 
-class Program
+namespace Program
 {
-    public static void Main()
+    class Program
     {
-        new Program().Start();
-    }
+        private const int NumberOfThreads = 10;
+        private readonly Random _random = new ();
 
-    private void Start()
-    {
-        Random random = new Random();
-
-        for (int i = 1; i <= 4; i++)
+        static void Main()
         {
-            int time = random.Next(15000, 30000);
-            ThreadInfo info = new ThreadInfo(i, time);
-
-            Thread thread = new Thread(Counter);
-            thread.Start(info);
-        }
-    }
-
-    private void Counter(object obj)
-    {
-        ThreadInfo info = (ThreadInfo)obj;
-        
-        long sum = 0;
-        long count = 0;
-
-        DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddMilliseconds(info.TimeToRun);
-
-        while (DateTime.Now < endTime)
-        {
-            sum += count;
-            count++;
+            new Program().Start();
         }
 
-        Console.WriteLine($"\n[Потiк №{info.Id}] завершився через {info.TimeToRun / 1000.0:F1} сек.");
-        Console.WriteLine($"Кiлькiсть елементiв: {count}");
-        Console.WriteLine($"Сума: {sum}");
+        private void Start()
+        {
+            ThreadInfo[] threads = new ThreadInfo[NumberOfThreads];
+
+            for (int i = 0; i < NumberOfThreads; i++)
+            {
+                int threadId = i + 1;
+                int timeInSeconds = _random.Next(10000, 30000);
+                
+                threads[i] = new ThreadInfo(threadId, timeInSeconds);
+                
+                Console.WriteLine($"Потiк №{threadId} почав виконання на {timeInSeconds / 1000.0:F1} сек.");
+            }
+
+            foreach (var info in threads)
+            {
+                Thread thread = new Thread(() => Counter(info));
+                
+                info.Thread = thread;
+                info.Stopwatch = Stopwatch.StartNew();
+                thread.Start();
+            }
+
+            Thread managerThread = new Thread(() => ManageThreads(threads));
+            managerThread.Start();
+        }
+
+        private void Counter(ThreadInfo info)
+        {
+            long sum = 0;
+            long count = 0;
+
+            info.Stopwatch = Stopwatch.StartNew();
+
+            while (!info.ShouldStop) 
+            {
+                sum += count;
+                count++;
+            }
+
+            Console.WriteLine($"\n[Потiк #{info.Id}] зупинено через {info.TimeInSeconds / 1000.0:F1} сек.");
+            Console.WriteLine($"Кiлькiсть елементiв: {count}");
+            Console.WriteLine($"Сума: {sum}");
+        }
+
+        private static void ManageThreads(ThreadInfo[] infos)
+        {
+            bool isFinished  = false;
+
+            while (!isFinished)
+            {
+                isFinished = true;
+
+                foreach (var info in infos)
+                {
+                    if (!info.ShouldStop && info.Stopwatch.ElapsedMilliseconds >= info.TimeInSeconds)
+                    {
+                        info.ShouldStop = true;
+                    }
+
+                    if (!info.ShouldStop) isFinished = false;
+                }
+            }
+        }
     }
 }

@@ -1,7 +1,21 @@
-﻿namespace Program;
+﻿using System.Diagnostics;
 
-class ThreadInfo(int id, int timeToRun)
+namespace Program
 {
-    public int Id { get; set; } = id;
-    public int TimeToRun { get; set; } = timeToRun;
+    public class ThreadInfo
+    {
+        public int Id { get; set; }
+        public int TimeInSeconds { get; set; }
+        public Thread Thread { get; set; }
+        public Stopwatch Stopwatch { get; set; }
+        
+        public volatile bool ShouldStop;
+
+        public ThreadInfo(int id, int timeToRun)
+        {
+            Id = id;
+            TimeInSeconds = timeToRun;
+        }
+    }
 }
+
