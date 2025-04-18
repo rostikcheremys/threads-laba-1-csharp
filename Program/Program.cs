@@ -46,7 +46,7 @@ namespace Program
 
             info.Stopwatch = Stopwatch.StartNew();
 
-            while (!info.ShouldStop) 
+            while (!info.CanStop) 
             {
                 sum += count;
                 count++;
@@ -67,12 +67,12 @@ namespace Program
 
                 foreach (var info in infos)
                 {
-                    if (!info.ShouldStop && info.Stopwatch.ElapsedMilliseconds >= info.TimeInSeconds)
+                    if (!info.CanStop && info.Stopwatch.ElapsedMilliseconds >= info.TimeInSeconds)
                     {
-                        info.ShouldStop = true;
+                        info.CanStop = true;
                     }
 
-                    if (!info.ShouldStop) isFinished = false;
+                    if (!info.CanStop) isFinished = false;
                 }
             }
         }

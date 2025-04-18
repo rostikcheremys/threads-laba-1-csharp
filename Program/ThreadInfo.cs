@@ -9,7 +9,7 @@ namespace Program
         public Thread Thread { get; set; }
         public Stopwatch Stopwatch { get; set; }
         
-        public volatile bool ShouldStop;
+        public volatile bool CanStop;
 
         public ThreadInfo(int id, int timeToRun)
         {
